@@ -14,8 +14,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    /* text-align: center; */
-    margin: -10px 0px 0px 0px;
+    text-align: center;
 }
 a{
     color: #ffffff;

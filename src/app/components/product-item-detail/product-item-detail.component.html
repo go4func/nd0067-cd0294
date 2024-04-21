@@ -1,1 +1,24 @@
-<p>product-item-detail works!</p>
+<div class="detail-container">
+  <img class="img" src="{{ product.url }}" alt="{{ product.description }}" />
+  <div class="detail-item">
+    <p>
+      <b>{{ product.name }}</b>
+    </p>
+    <p>${{ product.price }}</p>
+    <p>{{ product.description }}</p>
+    <div>
+      <select class="select-input" name="productQuantity" id="productQuantity">
+        <option
+          *ngFor="let index of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+          [value]="index"
+        >
+          {{ index }}
+        </option>
+      </select>
+    </div>
+    <button class="btn btn-primary">Add to Cart</button>
+    <div>
+      <a class="back-link" routerLink="/products"><- Back to product list</a>
+    </div>
+  </div>
+</div>

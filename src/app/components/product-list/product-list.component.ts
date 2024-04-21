@@ -20,6 +20,5 @@ export class ProductListComponent {
     this.httpSvc.getProducts().subscribe((products) => {
       this.products = products;
     });
-    debugger;
   }
 }
