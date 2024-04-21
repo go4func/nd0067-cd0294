@@ -1,1 +1,20 @@
-<p>product-item works!</p>
+<div class="product-container">
+  <img
+    class="product-image"
+    src="{{ product.url }}"
+    alt="{{ product.description }}"
+  />
+  <p>
+    <b>{{ product.name }}</b>
+  </p>
+  <p>${{ product.price }}</p>
+  <select class="select-input" name="productQuantity" id="productQuantity">
+    <option
+      *ngFor="let index of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
+      [value]="index"
+    >
+      {{ index }}
+    </option>
+  </select>
+  <button class="btn btn-primary">Add to Cart</button>
+</div>
