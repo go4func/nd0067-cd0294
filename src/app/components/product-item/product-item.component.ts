@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Product } from '../../models/product';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-item',
@@ -13,7 +14,7 @@ import { RouterModule } from '@angular/router';
 export class ProductItemComponent {
   @Input() product: Product;
 
-  constructor() {
+  constructor(private cartSvc: CartService) {
     this.product = {
       id: 0,
       name: '',
@@ -21,5 +22,9 @@ export class ProductItemComponent {
       url: '',
       description: '',
     };
+  }
+
+  addToCart(product: Product): void {
+    this.cartSvc.addToCart(product);
   }
 }

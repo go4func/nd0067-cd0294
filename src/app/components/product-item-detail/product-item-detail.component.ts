@@ -3,6 +3,7 @@ import { Product } from '../../models/product';
 import { HttpService } from '../../services/http.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-item-detail',
@@ -15,7 +16,7 @@ export class ProductItemDetailComponent {
   @Input({ transform: numberAttribute }) id = 0;
   product: Product;
 
-  constructor(private httpSvc: HttpService) {
+  constructor(private httpSvc: HttpService, private cartSvc: CartService) {
     this.product = {
       id: 0,
       name: '',
@@ -29,5 +30,9 @@ export class ProductItemDetailComponent {
     this.httpSvc.getProducts().subscribe((products) => {
       this.product = products.find((prd) => prd.id === this.id) as Product;
     });
+  }
+
+  addToCart(product: Product): void {
+    this.cartSvc.addToCart(product);
   }
 }
