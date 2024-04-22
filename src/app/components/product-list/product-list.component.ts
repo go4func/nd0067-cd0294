@@ -21,11 +21,7 @@ export class ProductListComponent {
     const cart = this.cartSvc.getCart();
     this.httpSvc.getProducts().subscribe((products) => {
       products.map((prd) => {
-        if (cart.has(prd.id)) {
-          prd.quantity = cart.get(prd.id)?.quantity;
-        } else {
-          prd.quantity = 0;
-        }
+        prd.quantity = cart.get(prd.id)?.quantity || 0;
       });
       this.products = products;
     });

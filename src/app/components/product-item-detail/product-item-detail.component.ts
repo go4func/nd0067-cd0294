@@ -32,11 +32,7 @@ export class ProductItemDetailComponent {
     const cart = this.cartSvc.getCart();
     this.httpSvc.getProducts().subscribe((products) => {
       this.product = products.find((prd) => prd.id === this.id) as Product;
-      if (cart.has(this.product.id)) {
-        this.product.quantity = cart.get(this.product.id)?.quantity;
-      } else {
-        this.product.quantity = 0;
-      }
+      this.product.quantity = cart.get(this.product.id)?.quantity || 0;
     });
   }
 
