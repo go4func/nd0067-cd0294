@@ -23,7 +23,11 @@ export class CartService {
     }
 
     if (!product.quantity) {
-      alert(`Please select quantity for ${product.name}!`);
+      alert(`Please input quantity for ${product.name}!`);
+      return;
+    }
+    if (product.quantity && product.quantity < 0) {
+      alert(`Please input positive number!`);
       return;
     }
 

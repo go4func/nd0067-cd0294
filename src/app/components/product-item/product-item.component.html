@@ -9,7 +9,13 @@
     <b>{{ product.name }}</b>
   </p>
   <p>${{ product.price }}</p>
-  <input type="number" class="select-input" [(ngModel)]="product.quantity" />
+  <input
+    type="number"
+    class="select-input"
+    min="0"
+    oninput="validity.valid||(value='');"
+    [(ngModel)]="product.quantity"
+  />
   <button class="btn btn-primary" (click)="addToCart(product)">
     Add to Cart
   </button>
