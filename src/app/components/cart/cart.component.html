@@ -1,13 +1,83 @@
-<div>
+<!-- products -->
+<div class="cart-container">
   <div *ngFor="let product of cart">
-    <img src="{{ product.url }}" alt="{{ product.description }}" />
-    <div>
+    <img class="img" src="{{ product.url }}" alt="{{ product.description }}" />
+    <div class="cart-item">
       <p>
         <b>{{ product.name }}</b>
       </p>
       <p>${{ product.price }}</p>
-      <label for=""></label>
+      <label for="amount">Amount:</label>
       <input type="text" id="amount" value="{{ product.quantity }}" />
     </div>
   </div>
+  <div>
+    <b>Total: ${{ total }}</b>
+  </div>
 </div>
+
+<!-- form -->
+<form #form="ngForm" class="form-margin" (ngSubmit)="submitForm()">
+  <!-- <div
+    *ngIf="postTitle.invalid && (postTitle.dirty || postTitle.touched)"
+    class="alert"
+  >
+    <div *ngIf="postTitle.errors?.['required']">
+      Please provide a title for your blog post.
+    </div>
+    <div *ngIf="postTitle.errors?.['minlength']">
+      The title of the blog must contain at least 6 characters.
+    </div>
+  </div> -->
+
+  <div class="form-group">
+    <label for="fullName">Full Name</label>
+    <input
+      class="form-control"
+      type="text"
+      #fullNameRef="ngModel"
+      [(ngModel)]="fullName"
+      id="fullName"
+      name="fullName"
+      required
+      minlength="3"
+      placeholder="(minimum 3 characters)"
+    />
+  </div>
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input
+      class="form-control"
+      type="text"
+      #addressRef="ngModel"
+      [(ngModel)]="address"
+      id="address"
+      name="address"
+      required
+      minlength="6"
+      placeholder="(minimum 6 characters)"
+    />
+  </div>
+  <div class="form-group">
+    <label for="creditCardNO">Credit card number</label>
+    <input
+      class="form-control"
+      type="number"
+      #creditCardNORef="ngModel"
+      [(ngModel)]="creditCardNO"
+      id="creditCardNO"
+      name="creditCardNO"
+      required
+      minlength="16"
+      placeholder="(16-digit number)"
+    />
+    <small>We'll never share your payment detail with anyone else</small>
+  </div>
+  <br />
+  <input
+    type="submit"
+    value="Submit"
+    class="btn btn-primary"
+    [disabled]="form.invalid"
+  />
+</form>

@@ -1,13 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product';
+import { Confirmation, Product } from '../models/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  cart: Map<number, Product> = new Map();
+  cart: Map<number, Product>;
+  confirmation: Confirmation;
 
-  constructor() {}
+  constructor() {
+    this.cart = new Map();
+    this.confirmation = {
+      name: '',
+      total: 0,
+    };
+  }
 
   addToCart(product: Product): void {
     if (!product.quantity && this.cart.delete(product.id)) {
@@ -31,5 +38,12 @@ export class CartService {
 
   getCart(): Map<number, Product> {
     return this.cart;
+  }
+
+  setConfirmation(confirmation: Confirmation): void {
+    this.confirmation = confirmation;
+  }
+  getConfirmation(): Confirmation {
+    return this.confirmation;
   }
 }

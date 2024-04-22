@@ -6,3 +6,8 @@ export interface Product {
   description: string;
   quantity?: number;
 }
+
+export interface Confirmation {
+  name: string;
+  total: number;
+}
