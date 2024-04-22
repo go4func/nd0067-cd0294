@@ -20,6 +20,8 @@ export class CartComponent {
   constructor(private cartSvc: CartService) {}
 
   ngOnInit(): void {
-    this.cart = this.cartSvc.getCart();
+    this.cartSvc.getCart().forEach((prd) => {
+      this.cart.push(prd);
+    });
   }
 }

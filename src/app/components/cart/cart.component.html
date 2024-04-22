@@ -1,5 +1,13 @@
 <div>
   <div *ngFor="let product of cart">
     <img src="{{ product.url }}" alt="{{ product.description }}" />
+    <div>
+      <p>
+        <b>{{ product.name }}</b>
+      </p>
+      <p>${{ product.price }}</p>
+      <label for=""></label>
+      <input type="text" id="amount" value="{{ product.quantity }}" />
+    </div>
   </div>
 </div>
