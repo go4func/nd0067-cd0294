@@ -40,9 +40,14 @@ export class CartService {
     return this.cart;
   }
 
+  clearCart(): void {
+    this.cart.clear();
+  }
+
   setConfirmation(confirmation: Confirmation): void {
     this.confirmation = confirmation;
   }
+
   getConfirmation(): Confirmation {
     return this.confirmation;
   }

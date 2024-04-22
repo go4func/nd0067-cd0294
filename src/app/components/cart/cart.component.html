@@ -1,8 +1,11 @@
+<!-- empty cart -->
 <ng-template [ngIf]="cart.length === 0" [ngIfElse]="elseBlock">
   <div class="empty-cart-message">
     <p>Your cart is empty!</p>
   </div>
 </ng-template>
+
+<!-- cart -->
 <ng-template #elseBlock>
   <div class="cart-container">
     <!-- cart items -->
@@ -36,13 +39,12 @@
 
     <!-- submit form -->
     <div class="form-margin">
-      <form #form="ngForm" (ngSubmit)="submitForm()">
+      <form class="was-validated" #form="ngForm" (ngSubmit)="submitForm()">
         <div class="form-group">
           <label for="fullName" class="form-label">Full Name</label>
           <input
             class="form-control"
             type="text"
-            #fullNameRef="ngModel"
             [(ngModel)]="fullName"
             id="fullName"
             name="fullName"
@@ -50,13 +52,14 @@
             minlength="3"
             placeholder="(minimum 3 characters)"
           />
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="form-group">
           <label for="address" class="form-label">Address</label>
           <input
             class="form-control"
             type="text"
-            #addressRef="ngModel"
             [(ngModel)]="address"
             id="address"
             name="address"
@@ -64,6 +67,8 @@
             minlength="6"
             placeholder="(minimum 6 characters)"
           />
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
         </div>
         <div class="form-group">
           <label for="creditCardNO" class="form-label"
@@ -72,7 +77,6 @@
           <input
             class="form-control"
             type="text"
-            #creditCardNORef="ngModel"
             [(ngModel)]="creditCardNO"
             id="creditCardNO"
             name="creditCardNO"
@@ -81,16 +85,17 @@
             maxlength="16"
             pattern="[0-9]{16}"
             placeholder="(16-digit number)"
+            aria-describedby="cardHelp"
           />
-          <small>We'll never share your payment detail with anyone else</small>
+          <div class="valid-feedback">Valid.</div>
+          <div class="invalid-feedback">Please fill out this field.</div>
+          <div id="cardHelp" class="form-text">
+            We'll never share your payment detail with anyone else.
+          </div>
         </div>
-        <br />
-        <input
-          type="submit"
-          value="Submit"
-          class="btn btn-primary"
-          [disabled]="form.invalid"
-        />
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">
+          Submit Form
+        </button>
       </form>
     </div>
   </div>
