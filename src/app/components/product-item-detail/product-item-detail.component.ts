@@ -39,4 +39,11 @@ export class ProductItemDetailComponent {
   addToCart(product: Product): void {
     this.cartSvc.addToCart(product);
   }
+
+  quantityChange(quantity: number): void {
+    this.product.quantity = quantity;
+    if (quantity === 0) {
+      this.cartSvc.removeFromCart(this.product);
+    }
+  }
 }

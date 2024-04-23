@@ -14,9 +14,8 @@
     class="select-input"
     min="0"
     oninput="validity.valid||(value='');"
-    [(ngModel)]="product.quantity"
+    [ngModel]="product.quantity"
+    (ngModelChange)="quantityChange($event)"
   />
-  <button class="btn btn-primary" (click)="addToCart(product)">
-    Add to Cart
-  </button>
+  <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
 </div>

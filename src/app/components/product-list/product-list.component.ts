@@ -26,4 +26,14 @@ export class ProductListComponent {
       this.products = products;
     });
   }
+
+  changeQuantity(event: Product): void {
+    if (event.quantity === 0) {
+      this.cartSvc.removeFromCart(event);
+    }
+  }
+
+  addToCart(event: Product): void {
+    this.cartSvc.addToCart(event);
+  }
 }

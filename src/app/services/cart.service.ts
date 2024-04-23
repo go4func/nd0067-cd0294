@@ -17,11 +17,6 @@ export class CartService {
   }
 
   addToCart(product: Product): void {
-    if (!product.quantity && this.cart.delete(product.id)) {
-      alert(`Removed ${product.name} from cart!`);
-      return;
-    }
-
     if (!product.quantity) {
       alert(`Please input quantity for ${product.name}!`);
       return;
@@ -37,6 +32,13 @@ export class CartService {
       alert(`Updated ${product.name} quantity to ${product.quantity}!`);
     } else {
       alert(`Added ${product.quantity} ${product.name} to cart!`);
+    }
+  }
+
+  removeFromCart(product: Product): void {
+    const hasProduct = this.cart.delete(product.id);
+    if (hasProduct) {
+      alert(`Removed ${product.name} from cart!`);
     }
   }
 

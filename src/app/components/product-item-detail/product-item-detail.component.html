@@ -13,6 +13,7 @@
         min="0"
         oninput="validity.valid||(value='');"
         [(ngModel)]="product.quantity"
+        (ngModelChange)="quantityChange($event)"
       />
     </div>
     <button class="btn btn-primary" (click)="addToCart(product)">

@@ -7,14 +7,19 @@ My Store is a web application that display products with essential information t
 ### Landing/Product
 
 ![Product page](product.png)
+User can select/input quantity (greater than 0) of products then click `Add to Cart` button to add them to cart. Click the button again with different quantity will update the cart for that item.
+
+Item can be remove from cart by input/select 0 for quantity.
 
 ## Product Detail
 
 ![Product detail](product-detail.png)
+User can view more detail of the product when they clicking on the product's image in listing page.
 
 ### Cart
 
 ![Cart](cart.png)
+User can checkout their cart by filling the form and submit.
 
 ## Built with
 
